@@ -1,0 +1,4 @@
+rootProject.name='OnBoardingAnimation'
+include ':app'
+include ':corehighlighterview'
+include ':walk-through-onboarder'
