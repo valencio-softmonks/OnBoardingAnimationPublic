@@ -104,7 +104,11 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
             setCloseListener { this@OnBoardingDialogueBox.dismiss() }
             setContentColorTintMode(contentTintColor)
             stepsPageIndicatorTextColor(stepsPageIndicatorTextColor)
-            setBackgroundColor(resources.getColor(R.color.transparentColor))
+            //setBackgroundColor(resources.getColor(R.color.transparentColor))
+
+            //setBackgroundDrawable(resources.getDrawable(R.drawable.background))  //Working
+
+
         }
 
         safeControlsLay.addView(
