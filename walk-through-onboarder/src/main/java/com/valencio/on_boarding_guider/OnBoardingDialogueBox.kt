@@ -106,7 +106,7 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
             stepsPageIndicatorTextColor(stepsPageIndicatorTextColor)
             //setBackgroundColor(resources.getColor(R.color.transparentColor))
 
-            //setBackgroundDrawable(resources.getDrawable(R.drawable.background))  //Working
+            setBackgroundDrawable(resources.getDrawable(R.drawable.background))  //Working
 
 
         }
