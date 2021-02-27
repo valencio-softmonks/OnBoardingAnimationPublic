@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="wrap_content">
 
 
@@ -11,29 +12,43 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         tools:background="@color/default_background_color"
-        tools:layout_editor_absoluteX="0dp">
+        tools:layout_editor_absoluteX="74dp">
 
 
         <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieAnimationView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/sedancarmoving" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/clouds"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/clouds" />
+
 
         <ImageView
             android:id="@+id/leftIV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="TODO"
             android:padding="5dp"
             android:src="@drawable/ic_previous"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:tint="@android:color/white" />
 
         <TextView
@@ -42,21 +57,20 @@
             android:layout_height="0dp"
             android:text="1 of 1"
             android:textColor="@android:color/darker_gray"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toTopOf="@+id/descTV"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/descTV"
+            app:layout_constraintStart_toStartOf="@+id/descTV"
+            app:layout_constraintTop_toBottomOf="@+id/descTV" />
 
         <TextView
             android:id="@+id/descTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="25dp"
+            android:layout_marginEnd="16dp"
             android:gravity="center"
             android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/leftIV"
-            app:layout_constraintRight_toLeftOf="@+id/rightIV"
+            app:layout_constraintEnd_toStartOf="@+id/closeIV"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Description" />
 
@@ -64,13 +78,10 @@
             android:id="@+id/closeIV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:padding="5dp"
             android:src="@drawable/ic_cancel"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descTV"
+            app:layout_constraintTop_toTopOf="parent"
             app:tint="@android:color/white" />
 
         <ImageView
@@ -81,10 +92,7 @@
             android:src="@drawable/ic_next"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:tint="@android:color/white" />
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
