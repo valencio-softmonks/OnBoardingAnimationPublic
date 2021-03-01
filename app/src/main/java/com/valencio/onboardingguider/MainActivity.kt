@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                     "123456789"
                 )
             )
-        ).setAroundColor(R.color.temp)
+        ).setAroundColor(android.R.color.darker_gray)
             .setContentTintColor(android.R.color.white)
             .setHighLighterColor(android.R.color.white)
             .setStepsPageIndicatorTextColor(android.R.color.holo_red_light)
