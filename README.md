@@ -12,7 +12,7 @@ Step 1 : Add to project root build.gradle.(Project Gradle)
 ----------
 Step 2 : Add the dependency.(Module Gradle)
 ----------
-	  implementation 'com.github.valencio-softmonks:OnBoardingAnimationPublic:v1.0.0'
+	  implementation 'com.github.valencio-softmonks:OnBoardingAnimationPublic:v1.0.1'
 
 ----------
 Step 3 : Implementation in the code
