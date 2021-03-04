@@ -89,7 +89,6 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
 
         circleRectView.post {
             addControls(circleRectView)
-
             setUpOnClickListeners()
         }
     }
@@ -107,8 +106,6 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
             //setBackgroundColor(resources.getColor(R.color.transparentColor))
 
             setBackgroundDrawable(resources.getDrawable(R.drawable.background))  //Working
-
-
         }
 
         safeControlsLay.addView(
@@ -179,8 +176,10 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
         dialogRootView.rightIV.enable(currentViewIndex < anchorViews.size - 1)
 
         if (currentViewIndex < anchorViews.size - 1) {
+            closeAnim.isEnabled = false
             closeAnim.visibility = View.GONE
         } else {
+            rightAnim.isEnabled = false
             rightAnim.visibility = View.GONE
         }
 
