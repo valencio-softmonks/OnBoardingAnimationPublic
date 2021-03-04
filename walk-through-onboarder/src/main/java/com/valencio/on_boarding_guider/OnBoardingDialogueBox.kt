@@ -13,6 +13,7 @@ import androidx.annotation.ColorRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.valencio.highlighterview.CircleInRectangleView
+import kotlinx.android.synthetic.main.controls_layout.*
 import kotlinx.android.synthetic.main.controls_layout.view.*
 import kotlinx.android.synthetic.main.walkthough_guide_layout.view.*
 import kotlin.math.roundToInt
@@ -58,7 +59,6 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
         this.stepsPageIndicatorTextColor = stepsPageIndicatorTextColor
         return this
     }
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -140,20 +140,22 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
         dialogRootView.bottomGroundLay.removeAllViews()
         dialogRootView.middleGroundLay.removeAllViews()
 
-        return if (topRegionRect.contains(
+        return when {
+            topRegionRect.contains(
                 anchorCoordinates[0].roundToInt(),
                 anchorCoordinates[1].roundToInt()
-            )
-        ) {
-            dialogRootView.middleGroundLay
-        } else if (bottomRegionRect.contains(
+            ) -> {
+                dialogRootView.middleGroundLay
+            }
+            bottomRegionRect.contains(
                 anchorCoordinates[0].roundToInt(),
                 anchorCoordinates[1].roundToInt()
-            )
-        ) {
-            dialogRootView.middleGroundLay
-        } else {
-            dialogRootView.bottomGroundLay
+            ) -> {
+                dialogRootView.middleGroundLay
+            }
+            else -> {
+                dialogRootView.bottomGroundLay
+            }
         }
     }
 
@@ -176,6 +178,11 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
 
         dialogRootView.rightIV.enable(currentViewIndex < anchorViews.size - 1)
 
+        if (currentViewIndex < anchorViews.size - 1) {
+            closeAnim.visibility = View.GONE
+        } else {
+            rightAnim.visibility = View.GONE
+        }
 
     }
 
