@@ -46,8 +46,9 @@ class MainActivity : AppCompatActivity() {
                     "This is an imageView",
                     closePopUp = false
                 ), AnchorView(
-                    findViewById<ImageView>(R.id.valencio),
-                    "Valencio", closePopUp = true
+                    findViewById<ImageView>(R.id.imageView),
+                    "This is an imageView",
+                    closePopUp = true
                 )
             )
         ).apply {
