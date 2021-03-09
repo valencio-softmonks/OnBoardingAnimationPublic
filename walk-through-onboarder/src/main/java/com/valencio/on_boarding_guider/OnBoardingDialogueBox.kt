@@ -60,7 +60,6 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
         return this
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dialogRootView = layoutInflater.inflate(R.layout.walkthough_guide_layout, null)
@@ -120,6 +119,16 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
         set.connect(controlsLay.id, ConstraintSet.TOP, safeControlsLay.id, ConstraintSet.TOP)
         set.connect(controlsLay.id, ConstraintSet.BOTTOM, safeControlsLay.id, ConstraintSet.BOTTOM)
         set.applyTo(safeControlsLay)
+
+
+        /////
+        val closeCurrentActivity = anchorViews[currentViewIndex].closePopUp
+        if (closeCurrentActivity == true) {
+            this@OnBoardingDialogueBox.dismiss()
+        }
+        /////
+
+
     }
 
     private fun getSafeControlRegion(circleInRectangleView: CircleInRectangleView): ConstraintLayout {
@@ -183,6 +192,7 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
             rightAnim.visibility = View.GONE
         }
 
+
     }
 
     private fun View.enable(enable: Boolean) {
@@ -194,4 +204,5 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
             this.visibility = View.INVISIBLE
         }
     }
+
 }

@@ -17,7 +17,6 @@ class ControlsLay constructor(context: Context) : ConstraintLayout(context) {
     fun setCloseListener(action: () -> Unit) {
         findViewById<ImageView>(R.id.closeIV).setOnClickListener {
             action.invoke()
-            println(" Action")
         }
     }
 
