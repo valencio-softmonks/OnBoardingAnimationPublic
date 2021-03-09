@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 ), AnchorView(
                     findViewById<ImageView>(R.id.imageView),
                     "This is an imageView",
-                    closePopUp = true
+                    closePopUp = false
                 )
             )
         ).apply {
@@ -58,7 +58,6 @@ class MainActivity : AppCompatActivity() {
             setStepsPageIndicatorTextColor(android.R.color.holo_red_light)
             show()
         }
-
 
     }
 
