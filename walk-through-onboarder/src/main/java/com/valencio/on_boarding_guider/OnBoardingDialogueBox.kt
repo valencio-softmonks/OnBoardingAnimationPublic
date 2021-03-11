@@ -126,6 +126,7 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
         if (closeCurrentActivity == true) {
             this@OnBoardingDialogueBox.dismiss()
         }
+
         /////
 
 
@@ -203,6 +204,10 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
             this.isEnabled = false
             this.visibility = View.INVISIBLE
         }
+    }
+
+    fun openIntent() {
+
     }
 
 }
