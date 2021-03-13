@@ -5,13 +5,16 @@ import android.app.AlertDialog
 import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
 import android.widget.FrameLayout
 import androidx.annotation.ColorRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.drawerlayout.widget.DrawerLayout
 import com.valencio.highlighterview.CircleInRectangleView
 import kotlinx.android.synthetic.main.controls_layout.*
 import kotlinx.android.synthetic.main.controls_layout.view.*
@@ -38,7 +41,6 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
 
     @ColorRes
     private var stepsPageIndicatorTextColor: Int = android.R.color.darker_gray
-
 
     fun setAroundColor(@ColorRes aroundColor: Int): OnBoardingDialogueBox {
         this.aroundColor = aroundColor
@@ -126,10 +128,7 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
         if (closeCurrentActivity == true) {
             this@OnBoardingDialogueBox.dismiss()
         }
-
         /////
-
-
     }
 
     private fun getSafeControlRegion(circleInRectangleView: CircleInRectangleView): ConstraintLayout {
@@ -165,7 +164,6 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
             }
         }
     }
-
 
     private fun setUpOnClickListeners() {
 
@@ -206,8 +204,9 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
         }
     }
 
-    fun openIntent() {
-
+    interface OpenIntent {
+        fun openIntent(openIntentFlag: Boolean?)
     }
+
 
 }

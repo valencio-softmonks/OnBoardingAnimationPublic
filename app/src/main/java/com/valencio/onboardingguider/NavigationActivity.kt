@@ -1,26 +1,25 @@
 package com.valencio.onboardingguider
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.Gravity
 import android.view.Menu
 import android.widget.ImageView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.valencio.on_boarding_guider.AnchorView
 import com.valencio.on_boarding_guider.OnBoardingDialogueBox
 
-class NavigationActivity : AppCompatActivity() {
+class NavigationActivity : AppCompatActivity(), OnBoardingDialogueBox.OpenIntent {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -80,27 +79,23 @@ class NavigationActivity : AppCompatActivity() {
     }
 
     private fun launchOnBoardingDialogueBox() {
-
-
-        val intent = Intent(this, Activity2::class.java)
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        drawerLayout.openDrawer(Gravity.LEFT)
+        // var openIntentFlag: OnBoardingDialogueBox.OpenIntent? = null
 
         OnBoardingDialogueBox(
             this@NavigationActivity,
             listOf(
                 AnchorView(
                     findViewById<ImageView>(R.id.fab),
-                    "Fab Icon",
-                    closePopUp = false
+                    "Fab Icon 1 ",
+                    closePopUp = false, openIntentFlag = openIntent(false)
                 ), AnchorView(
                     findViewById<ImageView>(R.id.nav_view),
-                    "Nav View",
-                    closePopUp = false
+                    "Nav View 2 ",
+                    closePopUp = false, openIntentFlag = openIntent(true)
                 ), AnchorView(
-                    findViewById<ImageView>(R.id.nav_home),
-                    "Nav Home",
-                    closePopUp = false
+                    findViewById<ImageView>(R.id.nav_view),
+                    "Nav Home 3 ",
+                    closePopUp = false, openIntentFlag = openIntent(false)
                 )
             )
         ).apply {
@@ -111,6 +106,16 @@ class NavigationActivity : AppCompatActivity() {
             show()
         }
 
+    }
+
+    override fun openIntent(openIntentFlag: Boolean?) {
+        if (openIntentFlag == true) {
+            val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+            drawerLayout.openDrawer(Gravity.LEFT)
+        } else {
+            val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+            drawerLayout.closeDrawer(Gravity.LEFT)
+        }
     }
 
 }
