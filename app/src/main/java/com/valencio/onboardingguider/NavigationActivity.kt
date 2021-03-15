@@ -113,9 +113,9 @@ class NavigationActivity : AppCompatActivity(), OpenNextIntent {
 
     }
 
-    override fun openIntent(intentFlag: Boolean?) {
+    override fun openIntent(openNextIntent: Boolean?) {
         Log.d("Interface Triggered", "NavigationActivity")
-        if (intentFlag == true) {
+        if (openNextIntent == true) {
             val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
             drawerLayout.openDrawer(Gravity.LEFT)
             /////
