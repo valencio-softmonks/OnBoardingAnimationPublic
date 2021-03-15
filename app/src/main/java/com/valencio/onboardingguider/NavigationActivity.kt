@@ -2,6 +2,7 @@ package com.valencio.onboardingguider
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.Gravity
 import android.view.Menu
 import android.widget.ImageView
@@ -18,8 +19,9 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.valencio.on_boarding_guider.AnchorView
 import com.valencio.on_boarding_guider.OnBoardingDialogueBox
+import com.valencio.on_boarding_guider.OpenNextIntent
 
-class NavigationActivity : AppCompatActivity(), OnBoardingDialogueBox.OpenIntent {
+class NavigationActivity : AppCompatActivity(), OpenNextIntent {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -85,17 +87,23 @@ class NavigationActivity : AppCompatActivity(), OnBoardingDialogueBox.OpenIntent
             this@NavigationActivity,
             listOf(
                 AnchorView(
+                    this@NavigationActivity,
                     findViewById<ImageView>(R.id.fab),
                     "Fab Icon 1 ",
-                    closePopUp = false, openIntentFlag = openIntent(false)
+                    closePopUp = false,
+                    openNextIntentFlag = false
                 ), AnchorView(
-                    findViewById<ImageView>(R.id.nav_view),
+                    this@NavigationActivity,
+                    findViewById<ImageView>(R.id.nav_home),
                     "Nav View 2 ",
-                    closePopUp = false, openIntentFlag = openIntent(true)
+                    closePopUp = false,
+                    openNextIntentFlag = false
                 ), AnchorView(
-                    findViewById<ImageView>(R.id.nav_view),
+                    this@NavigationActivity,
+                    findViewById<ImageView>(R.id.nav_gallery),
                     "Nav Home 3 ",
-                    closePopUp = false, openIntentFlag = openIntent(false)
+                    closePopUp = false,
+                    openNextIntentFlag = true
                 )
             )
         ).apply {
@@ -108,8 +116,9 @@ class NavigationActivity : AppCompatActivity(), OnBoardingDialogueBox.OpenIntent
 
     }
 
-    override fun openIntent(openIntentFlag: Boolean?) {
-        if (openIntentFlag == true) {
+    override fun openIntent(intentFlag: Boolean?) {
+        Log.d("Interface Triggered", "NavigationActivity")
+        if (intentFlag == true) {
             val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
             drawerLayout.openDrawer(Gravity.LEFT)
         } else {

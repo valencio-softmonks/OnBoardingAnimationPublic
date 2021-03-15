@@ -42,13 +42,17 @@ class MainActivity : AppCompatActivity() {
             this@MainActivity,
             listOf(
                 AnchorView(
+                    this,
                     findViewById<ImageView>(R.id.imageView),
                     "This is an imageView",
-                    closePopUp = false
+                    closePopUp = false,
+                    openNextIntentFlag = false
                 ), AnchorView(
+                    this,
                     findViewById<ImageView>(R.id.imageView),
                     "This is an imageView",
-                    closePopUp = false
+                    closePopUp = false,
+                    openNextIntentFlag = false
                 )
             )
         ).apply {

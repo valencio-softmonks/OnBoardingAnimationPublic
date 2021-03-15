@@ -5,16 +5,15 @@ import android.app.AlertDialog
 import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
-import android.net.Uri
 import android.os.Bundle
-import android.view.Gravity
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.FrameLayout
 import androidx.annotation.ColorRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-import androidx.drawerlayout.widget.DrawerLayout
+import com.airbnb.lottie.utils.Logger
 import com.valencio.highlighterview.CircleInRectangleView
 import kotlinx.android.synthetic.main.controls_layout.*
 import kotlinx.android.synthetic.main.controls_layout.view.*
@@ -29,6 +28,7 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
     private lateinit var dialogRootView: View
 
     private var currentViewIndex = 0
+    var openIntentCallback: OpenNextIntent? = null
 
     @ColorRes
     private var aroundColor: Int = R.color.transparentColor  //#cb000000
@@ -66,6 +66,8 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
         super.onCreate(savedInstanceState)
         dialogRootView = layoutInflater.inflate(R.layout.walkthough_guide_layout, null)
         setContentView(dialogRootView)
+
+        openIntentCallback = (activity as OpenNextIntent)
 
         window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -129,6 +131,12 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
             this@OnBoardingDialogueBox.dismiss()
         }
         /////
+
+        val openNextActivity = anchorViews[currentViewIndex].openNextIntentFlag
+        if (openNextActivity == true) {
+            Log.d("Interface Triggered", "OnBoardingAnimation")
+            openIntentCallback?.openIntent(openNextActivity)
+        }
     }
 
     private fun getSafeControlRegion(circleInRectangleView: CircleInRectangleView): ConstraintLayout {
@@ -203,10 +211,5 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
             this.visibility = View.INVISIBLE
         }
     }
-
-    interface OpenIntent {
-        fun openIntent(openIntentFlag: Boolean?)
-    }
-
 
 }
