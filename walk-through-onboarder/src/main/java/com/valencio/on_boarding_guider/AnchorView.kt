@@ -1,10 +1,8 @@
 package com.valencio.on_boarding_guider
 
-import android.content.Context
 import android.view.View
 
 class AnchorView(
-    val context: Context?,
     val anchorView: View,
     val description: String,
     val closePopUp: Boolean?,

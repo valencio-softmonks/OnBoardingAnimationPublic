@@ -87,22 +87,19 @@ class NavigationActivity : AppCompatActivity(), OpenNextIntent {
             this@NavigationActivity,
             listOf(
                 AnchorView(
-                    this@NavigationActivity,
                     findViewById<ImageView>(R.id.fab),
                     "Fab Icon 1 ",
                     closePopUp = false,
                     openNextIntentFlag = false
                 ), AnchorView(
-                    this@NavigationActivity,
                     findViewById<ImageView>(R.id.nav_home),
                     "Nav View 2 ",
                     closePopUp = false,
                     openNextIntentFlag = false
                 ), AnchorView(
-                    this@NavigationActivity,
                     findViewById<ImageView>(R.id.nav_gallery),
                     "Nav Home 3 ",
-                    closePopUp = false,
+                    closePopUp = true,
                     openNextIntentFlag = true
                 )
             )
@@ -121,6 +118,31 @@ class NavigationActivity : AppCompatActivity(), OpenNextIntent {
         if (intentFlag == true) {
             val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
             drawerLayout.openDrawer(Gravity.LEFT)
+            /////
+            OnBoardingDialogueBox(
+                this@NavigationActivity,
+                listOf(
+                    AnchorView(
+                        findViewById<ImageView>(R.id.nav_slideshow),
+                        "Nav Home 3 ",
+                        closePopUp = false,
+                        openNextIntentFlag = false
+                    ),AnchorView(
+                        findViewById<ImageView>(R.id.nav_slideshow),
+                        "Nav Home 3 ",
+                        closePopUp = false,
+                        openNextIntentFlag = false
+                    )
+                )
+            ).apply {
+                setAroundColor(android.R.color.transparent)
+                setContentTintColor(android.R.color.white)
+                setHighLighterColor(android.R.color.holo_red_light)
+                setStepsPageIndicatorTextColor(android.R.color.holo_red_light)
+                show()
+            }
+            /////
+
         } else {
             val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
             drawerLayout.closeDrawer(Gravity.LEFT)
