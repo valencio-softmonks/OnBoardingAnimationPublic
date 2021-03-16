@@ -65,15 +65,12 @@ class NavigationActivity : AppCompatActivity(), OpenNextIntent {
     }
 
     private fun timerFunction() {
-
         object : CountDownTimer(1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-
             }
 
             override fun onFinish() {
                 launchOnBoardingDialogueBox()
-
             }
         }.start()
 
