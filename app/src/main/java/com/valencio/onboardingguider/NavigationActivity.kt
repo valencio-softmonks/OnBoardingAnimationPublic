@@ -64,7 +64,6 @@ class NavigationActivity : AppCompatActivity(), OpenNextIntent {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-
     private fun timerFunction() {
 
         object : CountDownTimer(1000, 1000) {
@@ -89,11 +88,6 @@ class NavigationActivity : AppCompatActivity(), OpenNextIntent {
                 AnchorView(
                     findViewById<ImageView>(R.id.fab),
                     "Fab Icon 1 ",
-                    closePopUp = false,
-                    openNextIntentFlag = false
-                ), AnchorView(
-                    findViewById<ImageView>(R.id.nav_home),
-                    "Nav View 2 ",
                     closePopUp = false,
                     openNextIntentFlag = false
                 ), AnchorView(
@@ -127,15 +121,15 @@ class NavigationActivity : AppCompatActivity(), OpenNextIntent {
                         "Nav Home 3 ",
                         closePopUp = false,
                         openNextIntentFlag = false
-                    ),AnchorView(
-                        findViewById<ImageView>(R.id.nav_slideshow),
-                        "Nav Home 3 ",
+                    ), AnchorView(
+                        findViewById<ImageView>(R.id.nav_home),
+                        "Nav Home Highlight - (Camera)",
                         closePopUp = false,
                         openNextIntentFlag = false
                     )
                 )
             ).apply {
-                setAroundColor(android.R.color.transparent)
+                setAroundColor(android.R.color.holo_red_light)
                 setContentTintColor(android.R.color.white)
                 setHighLighterColor(android.R.color.holo_red_light)
                 setStepsPageIndicatorTextColor(android.R.color.holo_red_light)

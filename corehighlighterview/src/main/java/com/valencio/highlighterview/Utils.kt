@@ -28,8 +28,13 @@ internal fun Activity.statusBarHeight(): Int {
 }
 
 internal fun View.getRadius(): Float {
-    val h = this.height
-    val w = this.width
-    val diameter = if (h > w) h else w
+    val height = this.height
+    val width = this.width
+    val diameter = if (height > width) {
+        height
+    } else {
+        width
+    }
     return diameter / 2.0f
 }
+

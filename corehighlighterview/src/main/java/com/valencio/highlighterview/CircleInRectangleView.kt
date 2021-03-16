@@ -33,6 +33,7 @@ class CircleInRectangleView : View {
         this.setLayerType(LAYER_TYPE_SOFTWARE, null)
 
         radius = anchorView.getRadius()
+
         val anchorViewCoordinates = anchorView.getAnchorViewLocationCoordinates(activity)
         circleCentreX = anchorViewCoordinates[0]
         circleCentreY = anchorViewCoordinates[1]
@@ -62,7 +63,12 @@ class CircleInRectangleView : View {
 
         canvas?.drawRect(0f, 0f, w.toFloat(), h.toFloat(), rectPaint)
 
-        canvas?.drawCircle(circleCentreX, circleCentreY, radius, circlePaint)
+        /** circleCenterX = PositionX
+        circleCenterY = PositionY
+         */
+        //canvas?.drawCircle(circleCentreX, circleCentreY, radius, circlePaint) //Working
+
+        canvas?.drawCircle(circleCentreX, circleCentreY, radius, circlePaint) //Working
 
         invalidate()
     }

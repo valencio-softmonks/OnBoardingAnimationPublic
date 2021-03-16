@@ -199,7 +199,6 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
             rightAnim.visibility = View.GONE
         }
 
-
     }
 
     private fun View.enable(enable: Boolean) {
@@ -209,6 +208,14 @@ class OnBoardingDialogueBox @JvmOverloads constructor(
         } else {
             this.isEnabled = false
             this.visibility = View.INVISIBLE
+        }
+    }
+
+    override fun onBackPressed() {
+        if (leftIV.visibility == View.VISIBLE) {
+            currentViewIndex--
+            dialogRootView.highLighterLay.removeAllViews()
+            anchorViews[currentViewIndex].anchorView.highlightAView()
         }
     }
 
