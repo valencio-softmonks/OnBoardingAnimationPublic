@@ -137,6 +137,7 @@ class NavigationActivity : AppCompatActivity(), OpenNextIntent {
         } else {
             val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
             drawerLayout.closeDrawer(Gravity.LEFT)
+            //Close the Side Menu
         }
     }
 
