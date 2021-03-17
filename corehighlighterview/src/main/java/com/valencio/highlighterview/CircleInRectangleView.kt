@@ -71,7 +71,6 @@ class CircleInRectangleView : View {
         //canvas?.drawCircle(circleCentreX, circleCentreY, radius, circlePaint) //Working
 
         canvas?.drawCircle(circleCentreX, circleCentreY, radius, circlePaint) //Working
-        //TEstShreya
 
         invalidate()
     }
