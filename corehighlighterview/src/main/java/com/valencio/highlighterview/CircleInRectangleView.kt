@@ -13,6 +13,7 @@ class CircleInRectangleView : View {
     private var rectPaint: Paint = Paint()
 
     var radius = 50.0f
+
     private var circleCentreX = 0.0f
     private var circleCentreY = 0.0F
 
@@ -32,6 +33,7 @@ class CircleInRectangleView : View {
 
         this.setLayerType(LAYER_TYPE_SOFTWARE, null)
 
+        //radius = anchorView.getRadius()  // Working For Radius
         radius = anchorView.getRadius()
 
         val anchorViewCoordinates = anchorView.getAnchorViewLocationCoordinates(activity)

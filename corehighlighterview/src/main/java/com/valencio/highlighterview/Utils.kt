@@ -38,3 +38,9 @@ internal fun View.getRadius(): Float {
     return diameter / 2.0f
 }
 
+internal fun View.getSquare(): Float {
+    val height = this.height
+    val width = this.width
+    val square = height * width
+    return square / 2.0f
+}
