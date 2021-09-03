@@ -1,13 +1,13 @@
 package com.valencio.onboardingguider
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.ViewTreeObserver.OnGlobalLayoutListener
+import android.os.CountDownTimer
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.valencio.on_boarding_guider.AnchorView
 import com.valencio.on_boarding_guider.OnBoardingDialogueBox
+import kotlinx.android.synthetic.main.controls_layout.view.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,59 +15,51 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<ConstraintLayout>(R.id.rootView).viewTreeObserver.addOnGlobalLayoutListener(
-            object : OnGlobalLayoutListener {
-                override fun onGlobalLayout() {
-                    launchOnBoardingDialogueBox()
-                    findViewById<ConstraintLayout>(R.id.rootView).viewTreeObserver.removeOnGlobalLayoutListener(
-                        this
-                    )
-                }
-            })
-        /*findViewById<Button>(R.id.ashwini).setOnClickListener {
-            launchOnBoardingDialogueBox()
-        }*/
+        timerFunction()
     }
 
+    private fun timerFunction() {
+
+        object : CountDownTimer(1000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+
+            }
+
+            override fun onFinish() {
+                launchOnBoardingDialogueBox()
+
+            }
+        }.start()
+
+    }
 
     private fun launchOnBoardingDialogueBox() {
+
+
+        val intent = Intent(this, Activity2::class.java)
+
         OnBoardingDialogueBox(
             this@MainActivity,
             listOf(
                 AnchorView(
                     findViewById<ImageView>(R.id.imageView),
-                    "This is an imageView"
-                ),
-                AnchorView(
-                    findViewById<TextView>(R.id.valencio),
-                    "Hey there thats Valencio"
-                ),
-                AnchorView(
-                    findViewById<TextView>(R.id.ashwini),
-                    "\"Hey there thats Ashwini"
-                ),
-                AnchorView(
-                    findViewById<TextView>(R.id.shreya),
-                    "Hey there thats Shreya"
-                ),
-                AnchorView(
-                    findViewById<ImageView>(R.id.iv_123),
-                    "IV 123 "
-                ),
-                AnchorView(
-                    findViewById<ImageView>(R.id.iv_456),
-                    "IV 456"
-                ),
-                AnchorView(
-                    findViewById<ImageView>(R.id.iv_456),
-                    "123456789"
+                    "This is an imageView",
+                    closePopUp = false
+                ), AnchorView(
+                    findViewById<ImageView>(R.id.imageView),
+                    "This is an imageView",
+                    closePopUp = true
                 )
             )
-        ).setAroundColor(android.R.color.darker_gray)
-            .setContentTintColor(android.R.color.white)
-            .setHighLighterColor(android.R.color.white)
-            .setStepsPageIndicatorTextColor(android.R.color.holo_red_light)
-            .show()
+        ).apply {
+            setAroundColor(android.R.color.darker_gray)
+            setContentTintColor(android.R.color.white)
+            setHighLighterColor(android.R.color.white)
+            setStepsPageIndicatorTextColor(android.R.color.holo_red_light)
+            show()
+        }
+
+
     }
 
 }

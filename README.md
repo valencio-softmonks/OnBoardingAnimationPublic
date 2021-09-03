@@ -6,7 +6,7 @@ Step 1 : Add to project root build.gradle.(Project Gradle)
 	allprojects {
 		repositories {
 			...
-			maven { url 'https://jitpack.io' }
+			maven { url 'https://jitpack.io' } 
 		}
 	}
 ----------
